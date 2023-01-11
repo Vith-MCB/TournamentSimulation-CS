@@ -1,0 +1,15 @@
+D:\Visual Studio\Projects\TournamentSimulation-CS\Tournament Simulation\Tournament Simulation\bin\Debug\net6.0\Tournament Simulation.exe
+D:\Visual Studio\Projects\TournamentSimulation-CS\Tournament Simulation\Tournament Simulation\bin\Debug\net6.0\Tournament Simulation.deps.json
+D:\Visual Studio\Projects\TournamentSimulation-CS\Tournament Simulation\Tournament Simulation\bin\Debug\net6.0\Tournament Simulation.runtimeconfig.json
+D:\Visual Studio\Projects\TournamentSimulation-CS\Tournament Simulation\Tournament Simulation\bin\Debug\net6.0\Tournament Simulation.dll
+D:\Visual Studio\Projects\TournamentSimulation-CS\Tournament Simulation\Tournament Simulation\bin\Debug\net6.0\Tournament Simulation.pdb
+D:\Visual Studio\Projects\TournamentSimulation-CS\Tournament Simulation\Tournament Simulation\obj\Debug\net6.0\Tournament Simulation.csproj.AssemblyReference.cache
+D:\Visual Studio\Projects\TournamentSimulation-CS\Tournament Simulation\Tournament Simulation\obj\Debug\net6.0\Tournament Simulation.GeneratedMSBuildEditorConfig.editorconfig
+D:\Visual Studio\Projects\TournamentSimulation-CS\Tournament Simulation\Tournament Simulation\obj\Debug\net6.0\Tournament Simulation.AssemblyInfoInputs.cache
+D:\Visual Studio\Projects\TournamentSimulation-CS\Tournament Simulation\Tournament Simulation\obj\Debug\net6.0\Tournament Simulation.AssemblyInfo.cs
+D:\Visual Studio\Projects\TournamentSimulation-CS\Tournament Simulation\Tournament Simulation\obj\Debug\net6.0\Tournament Simulation.csproj.CoreCompileInputs.cache
+D:\Visual Studio\Projects\TournamentSimulation-CS\Tournament Simulation\Tournament Simulation\obj\Debug\net6.0\Tournament Simulation.dll
+D:\Visual Studio\Projects\TournamentSimulation-CS\Tournament Simulation\Tournament Simulation\obj\Debug\net6.0\refint\Tournament Simulation.dll
+D:\Visual Studio\Projects\TournamentSimulation-CS\Tournament Simulation\Tournament Simulation\obj\Debug\net6.0\Tournament Simulation.pdb
+D:\Visual Studio\Projects\TournamentSimulation-CS\Tournament Simulation\Tournament Simulation\obj\Debug\net6.0\Tournament Simulation.genruntimeconfig.cache
+D:\Visual Studio\Projects\TournamentSimulation-CS\Tournament Simulation\Tournament Simulation\obj\Debug\net6.0\ref\Tournament Simulation.dll
