@@ -1,30 +1,31 @@
 ﻿//Brasileirão Simulation
 
+using System;
 using Teams;
 
 #region Creating teams
 
 Team[] teams = new Team[20];
-teams[0] = new Team("AME", 2);
-teams[1] = new Team("APR", 3);
-teams[2] = new Team("AMG", 3);
-teams[3] = new Team("BAH", 1);
-teams[4] = new Team("BOT", 2);
-teams[5] = new Team("BRG", 2);
-teams[6] = new Team("COR", 3);
-teams[7] = new Team("CTB", 1);
-teams[8] = new Team("CRU", 2);
-teams[9] = new Team("CUI", 1);
-teams[10] = new Team("FLA",5);
-teams[11] = new Team("FLU",4);
-teams[12] = new Team("FOR",3);
-teams[13] = new Team("GOI",1);
-teams[14] = new Team("GRE",2);
-teams[15] = new Team("INT",2);
-teams[16] = new Team("PAL",5);
-teams[17] = new Team("SAN",2);
-teams[18] = new Team("SFC",2);
-teams[19] = new Team("VAS",2);
+teams[0] = new Team("AME", 62);
+teams[1] = new Team("APR", 72);
+teams[2] = new Team("AMG", 73);
+teams[3] = new Team("BAH", 56);
+teams[4] = new Team("BOT", 70);
+teams[5] = new Team("BRG", 65);
+teams[6] = new Team("COR", 72);
+teams[7] = new Team("CTB", 62);
+teams[8] = new Team("CRU", 65);
+teams[9] = new Team("CUI", 57);
+teams[10] = new Team("FLA",86);
+teams[11] = new Team("FLU",76);
+teams[12] = new Team("FOR",65);
+teams[13] = new Team("GOI",56);
+teams[14] = new Team("GRE",65);
+teams[15] = new Team("INT",63);
+teams[16] = new Team("PAL",84);
+teams[17] = new Team("SAN",63);
+teams[18] = new Team("SFC",66);
+teams[19] = new Team("VAS",60);
 
 #endregion
 
@@ -37,26 +38,34 @@ void ResetBoard(Team[] actualBoard)
     for(int i = 0; i < actualBoard.Length; i++)
     {
         actualBoard[i].points = 0;
+        actualBoard[i].goalsMade = 0;
+        actualBoard[i].goalsTaken = 0;
+        actualBoard[i].matches = 0;
     }
 }
-
 int CalculateGols(Team team)
 {
+    float strengthMultiplier = (float)team.strength / 100.0f;
     Random RandNumbGen = new Random();
-    int golChance = RandNumbGen.Next(0, 100) + team.strength;
+    float golChance = RandNumbGen.Next(0, 100) * strengthMultiplier;
 
-    if(golChance >= 0 && golChance < 30) { return 0; }
+    if (golChance >= 0 && golChance < 30) { return 0; }
     else if(golChance >= 30 && golChance < 55) { return 1; }
     else if (golChance >= 55 && golChance < 75) { return 2; }
     else if (golChance >= 75 && golChance < 90) { return 3; }
     else{ return 4; }
 
 }
-void SimulateMatches(Team[] teams)
+void SimulateMatches(Team[] teams, string response)
 {
     for(int i = 0; i < teams.Length; i++)
     {
-        for(int j = 0; j < teams.Length; j++)
+        if (response.Equals("y"))
+        {
+            Console.WriteLine("\n{0}'s Matches:\n", teams[i].name);
+        }
+        
+        for (int j = 0; j < teams.Length; j++)
         {
             if(i == j) //Garanting that the team will not match up with itself
             { 
@@ -83,10 +92,14 @@ void SimulateMatches(Team[] teams)
             }
             else { teams[j].points += 3;}
 
+            if (response.Equals("y"))
+            {
+                Console.WriteLine("{0} {1} X {2} {3}\n", teams[i].name, team1Goals, teams[j].name, team2Goals);
+            }
+
         }
     }
 }
-
 Team[] SortArray(Team[] array, int leftIndex, int rightIndex)
 {
     var i = leftIndex;
@@ -119,16 +132,15 @@ Team[] SortArray(Team[] array, int leftIndex, int rightIndex)
         SortArray(array, i, rightIndex);
     return array;
 }
-
-SimulateMatches(teams);
-
-board = SortArray(teams, 0, 19);
-Array.Reverse(board,0,20);
-
-void PrintBoard(Team[] board)
+void PrintBoard(Team[] board, string response)
 {
-    Console.WriteLine(" BRASILEIRÃO: ");
     int sg = 0;
+    if (response.Equals("y"))
+    {
+        Console.WriteLine();
+    }
+
+    Console.WriteLine("Brasileirão Board\n");
     for (int j = 0; j < board.Length; j++)
     {
         sg = board[j].goalsMade - board[j].goalsTaken;
@@ -136,8 +148,8 @@ void PrintBoard(Team[] board)
         //Color Scheme for the board
         if (j == 0) { Console.ForegroundColor = ConsoleColor.Green; }
         else if (j > 0 && j <= 3) { Console.ForegroundColor = ConsoleColor.Yellow; }
-        else if (j > 3 && j <= 6) { Console.ForegroundColor = ConsoleColor.Cyan; }
-        else if (j > 6 && j <= 15) { Console.ForegroundColor = ConsoleColor.White; }
+        else if (j > 3 && j < 6) { Console.ForegroundColor = ConsoleColor.Cyan; }
+        else if (j >= 6 && j <= 15) { Console.ForegroundColor = ConsoleColor.White; }
         else {Console.ForegroundColor = ConsoleColor.Red; }
 
 
@@ -148,8 +160,46 @@ void PrintBoard(Team[] board)
     }
 
     Console.ForegroundColor = ConsoleColor.White;
-    Console.WriteLine("\n Congratulations {0}! (Champion)", board[0].name);
+    Console.WriteLine("\n Congratulations {0}! (Champion)\n", board[0].name);
+
+    Console.ForegroundColor = ConsoleColor.Red;
+    Console.WriteLine(" Relegateds:");
+    for(int relegateds = 16; relegateds < 20; relegateds++)
+    {
+        Console.WriteLine(" {0}", board[relegateds].name);
+    }
+
+    Console.ForegroundColor = ConsoleColor.White;
 }
 #endregion
 
-PrintBoard(board);
+#region CONSOLE OUTPUT
+while (true)
+{
+    Console.WriteLine("BRASILIAN LEAGUE SIMULATION!\n");
+    Console.WriteLine("Do you want to print the matches? [Y/N]");
+    string response = Console.ReadLine().ToLower();
+    Console.Clear();
+
+    Console.WriteLine("BRASILIAN LEAGUE SIMULATION!\n");
+
+    SimulateMatches(teams, response);
+
+    board = SortArray(teams, 0, 19);
+    Array.Reverse(board, 0, 20);
+
+    PrintBoard(board, response);
+
+    Console.WriteLine("\nDo you want to simulate the league again? [Y/N]");
+    string simulateAgain = Console.ReadLine().ToLower();
+    if (simulateAgain.Equals("y")) 
+    {
+        ResetBoard(teams);
+        Console.Clear();
+        continue; 
+    }
+    else { return; }
+}
+
+
+#endregion
