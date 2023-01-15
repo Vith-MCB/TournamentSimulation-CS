@@ -1,5 +1,0 @@
-﻿// BASIC DATATYPES
-
-
-/* HASHTABLES
- */
